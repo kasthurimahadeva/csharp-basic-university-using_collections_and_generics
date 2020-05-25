@@ -13,16 +13,16 @@ namespace PandaKaradyUniversity.Models
 
         public static Student StudentParse(string line)
         {
-            var propertities = line.Split(',');
-            if(propertities.Length != 3) throw new ArgumentException($"Invalid line : {line}");
+            var properties = line.Split(',');
+            if(properties.Length != 3) throw new ArgumentException($"Invalid line : {line}");
                     
-            var isIdParsed = int.TryParse(propertities[StudentIdColNo], out var id);
+            var isIdParsed = int.TryParse(properties[StudentIdColNo], out var id);
             if(!isIdParsed) throw new ArgumentException($"Invalid Id -> line: {line}");
 
-            var name = propertities[StudentNameColNo];
+            var name = properties[StudentNameColNo];
             if(string.IsNullOrWhiteSpace(name)) throw new ArgumentException($"Invalid Name -> line : {line}");
 
-            var isDobParsed = DateTime.TryParse(propertities[StudentDobColNo], out var dob);
+            var isDobParsed = DateTime.TryParse(properties[StudentDobColNo], out var dob);
             if(!isDobParsed) throw new ArgumentException($"Invalid Dob -> line: {line}");
 
             var student = new Student {

@@ -11,13 +11,13 @@ namespace PandaKaradyUniversity.Models
 
         public static Course CourseParse(string line)
         {
-            var propertities = line.Split(',');
-            if(propertities.Length != 2) throw new ArgumentException($"Invalid line : {line}");
+            var properties = line.Split(',');
+            if(properties.Length != 2) throw new ArgumentException($"Invalid line : {line}");
                     
-            var isIdParsed = int.TryParse(propertities[CourseIdColNo], out var id);
+            var isIdParsed = int.TryParse(properties[CourseIdColNo], out var id);
             if(!isIdParsed) throw new ArgumentException($"Invalid Id -> line: {line}");
 
-            var title = propertities[CourseTitleColNo];
+            var title = properties[CourseTitleColNo];
             if(string.IsNullOrWhiteSpace(title)) throw new ArgumentException($"Invalid Name -> line : {line}");
 
             var course = new Course {
